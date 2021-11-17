@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "/pb";
+
+message State {
+  repeated Cell Field1 = 1;
+  repeated Cell Field2 = 2;
+}
+
+enum Cell {
+  EMPTY = 0;
+  SHIP = 1;
+  MISSED = 2;
+  GOT = 3;
+}

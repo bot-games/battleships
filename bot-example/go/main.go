@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bot-games/battleships/bot/go/api"
+	"github.com/bot-games/battleships/bot-example/go/api"
 )
 
 var (
