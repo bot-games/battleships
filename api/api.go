@@ -1,8 +1,16 @@
+//go:generate gostatic2lib -path docs/ -package docs -out docs/game.go
 package api
 
 import (
-	"github.com/go-qbit/rpc"
+	"bytes"
+	"compress/gzip"
+	"context"
+	"io/ioutil"
 
+	"github.com/go-qbit/rpc"
+	"github.com/go-qbit/rpc/openapi"
+
+	"github.com/bot-games/battleships/api/docs"
 	mActionFire "github.com/bot-games/battleships/api/method/action/fire"
 	mActionSetup "github.com/bot-games/battleships/api/method/action/setup"
 	mActionSkip "github.com/bot-games/battleships/api/method/action/skip"
@@ -12,8 +20,12 @@ import (
 	"github.com/bot-games/game-manager"
 )
 
-func New(gm manager.GameManager) *rpc.Rpc {
-	gameRpc := rpc.New("github.com/bot-games/battleships/api/method")
+type BattleshipsRpc struct {
+	*rpc.Rpc
+}
+
+func New(gm manager.GameManager) *BattleshipsRpc {
+	gameRpc := &BattleshipsRpc{rpc.New("github.com/bot-games/battleships/api/method")}
 
 	if err := gameRpc.RegisterMethods(
 		mJoin.New(gm),
@@ -26,4 +38,16 @@ func New(gm manager.GameManager) *rpc.Rpc {
 	}
 
 	return gameRpc
+}
+
+func (r *BattleshipsRpc) GetSwagger(ctx context.Context) *openapi.OpenApi {
+	swagger := r.Rpc.GetSwagger(ctx)
+	swagger.Info.Title = "Battleships bot API"
+
+	gz, _ := gzip.NewReader(bytes.NewBuffer(docs.NewHTTPHandler().GetFile("/game.md").Data))
+	data, _ := ioutil.ReadAll(gz)
+
+	swagger.Info.Description = string(data)
+
+	return swagger
 }
