@@ -7,18 +7,19 @@ import (
 	"github.com/bot-games/game-manager"
 )
 
-func (Battleships) DoActionFire(tickInfo *manager.TickInfo, pos string) (proto.Message, error) {
-	x, y, err := CoordinateToXY(pos)
-	if err != nil {
-		return nil, err
+func (Battleships) CheckActionFire(tickInfo *manager.TickInfo, fire *pb.ActionFire) error {
+	if !GetActions(tickInfo)[ActionFire] {
+		return manager.ErrInvalidAction
 	}
 
-	state := &pb.State{}
-	if err := proto.Unmarshal(tickInfo.Data, state); err != nil {
-		return nil, err
-	}
+	_, _, err := CoordinateToXY(fire.Coordinate)
+	return err
+}
 
-	f := GetField(state, tickInfo, false)
+func (Battleships) DoActionFire(tickInfo *manager.TickInfo, fire *pb.ActionFire) proto.Message {
+	x, y, _ := CoordinateToXY(fire.Coordinate)
+
+	f := GetField(tickInfo, false)
 	switch f[y*10+x] {
 	case pb.Cell_EMPTY:
 		f[y*10+x] = pb.Cell_MISSED
@@ -26,5 +27,5 @@ func (Battleships) DoActionFire(tickInfo *manager.TickInfo, pos string) (proto.M
 		f[y*10+x] = pb.Cell_GOT
 	}
 
-	return state, nil
+	return tickInfo.State
 }

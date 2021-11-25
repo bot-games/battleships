@@ -3,8 +3,8 @@ syntax = "proto3";
 option go_package = "/pb";
 
 message State {
-  repeated Cell Field1 = 1;
-  repeated Cell Field2 = 2;
+  repeated Cell field1 = 1;
+  repeated Cell field2 = 2;
 }
 
 enum Cell {
@@ -12,4 +12,36 @@ enum Cell {
   SHIP = 1;
   MISSED = 2;
   GOT = 3;
+}
+
+message Action {
+  oneof data {
+    ActionSkip skip = 1;
+    ActionSetup setup = 2;
+    ActionFire fire = 3;
+  }
+}
+
+message ActionSkip {}
+
+message ActionSetup {
+  message Ship {
+    string coordinate = 1;
+    bool vertical = 2;
+  }
+
+  Ship shipL4N1 = 1;
+  Ship shipL3N1 = 2;
+  Ship shipL3N2 = 3;
+  Ship shipL2N1 = 4;
+  Ship shipL2N2 = 5;
+  Ship shipL2N3 = 6;
+  Ship shipL1N1 = 7;
+  Ship shipL1N2 = 8;
+  Ship shipL1N3 = 9;
+  Ship shipL1N4 = 10;
+}
+
+message ActionFire {
+  string coordinate = 1;
 }

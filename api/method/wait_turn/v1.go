@@ -5,7 +5,6 @@ import (
 	"errors"
 
 	"github.com/go-qbit/rpc"
-	"github.com/golang/protobuf/proto"
 
 	"github.com/bot-games/battleships"
 	"github.com/bot-games/battleships/pb"
@@ -35,7 +34,7 @@ func (m *Method) ErrorsV1() interface{} {
 }
 
 func (m *Method) V1(ctx context.Context, r *reqV1) (*stateV1, error) {
-	g, err := m.gm.WaitTurn(ctx, r.Token, r.GameId)
+	tickInfo, err := m.gm.WaitTurn(ctx, r.Token, r.GameId)
 	if err != nil {
 		errGameFinished := &manager.ErrEndOfGame{}
 
@@ -59,21 +58,22 @@ func (m *Method) V1(ctx context.Context, r *reqV1) (*stateV1, error) {
 		return nil, err
 	}
 
-	state := &pb.State{}
-	if err := proto.Unmarshal(g.Data, state); err != nil {
-		return nil, err
+	actionsMap := battleships.GetActions(tickInfo)
+	actions := make([]string, 0, len(actionsMap))
+	for action := range actionsMap {
+		actions = append(actions, action)
 	}
 
 	return &stateV1{
-		TickId:        g.Id,
-		Actions:       battleships.Battleships{}.GetActions(g),
-		YourField:     createField(state, g, true),
-		OpponentField: createField(state, g, false),
+		TickId:        tickInfo.Id,
+		Actions:       actions,
+		YourField:     createField(tickInfo, true),
+		OpponentField: createField(tickInfo, false),
 	}, nil
 }
 
-func createField(state *pb.State, tickInfo *manager.TickInfo, isMy bool) []string {
-	stateField := battleships.GetField(state, tickInfo, isMy)
+func createField(tickInfo *manager.TickInfo, isMy bool) []string {
+	stateField := battleships.GetField(tickInfo, isMy)
 
 	f := make([]string, 10)
 

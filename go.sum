@@ -1,5 +1,5 @@
-github.com/bot-games/game-manager v0.1.0 h1:JDSIVynQI3rT4k326yKMlqjfJ3RXZ101fzBkeuKkg84=
-github.com/bot-games/game-manager v0.1.0/go.mod h1:KfHMmhfNEx7oh+xjq/ewQvTbyXjG2i3Txekyzu2gAqs=
+github.com/bot-games/game-manager v0.2.0 h1:wcr7IMI/LwTteIx6xw1w5SSqCpqm6bwtyKSixZirraA=
+github.com/bot-games/game-manager v0.2.0/go.mod h1:KfHMmhfNEx7oh+xjq/ewQvTbyXjG2i3Txekyzu2gAqs=
 github.com/go-qbit/rpc v0.0.0-20210926071738-84f99eae8c99 h1:JG6CxrFCF57Ss4BYdpQzs0S0hNaPRMThvMRQlGy6xdM=
 github.com/go-qbit/rpc v0.0.0-20210926071738-84f99eae8c99/go.mod h1:eRfRdTRt6bOK5UwCrtPDLyiE4uGoPyIAcCx3zIifRk8=
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=

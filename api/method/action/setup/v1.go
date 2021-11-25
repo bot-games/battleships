@@ -7,6 +7,7 @@ import (
 	"github.com/go-qbit/rpc"
 
 	"github.com/bot-games/battleships"
+	"github.com/bot-games/battleships/pb"
 	manager "github.com/bot-games/game-manager"
 )
 
@@ -47,23 +48,21 @@ func (m *Method) ErrorsV1() interface{} {
 }
 
 func (m *Method) V1(ctx context.Context, r *reqV1) (*struct{}, error) {
-	data := &battleships.ActionSetupData{
-		Ship4N1: battleships.Ship(r.Ships.Ship4N1),
+	if err := m.gm.DoAction(ctx, r.Token, r.GameId, &pb.Action{Data: &pb.Action_Setup{Setup: &pb.ActionSetup{
+		ShipL4N1: shipV1ToPb(r.Ships.Ship4N1),
 
-		Ship3N1: battleships.Ship(r.Ships.Ship3N1),
-		Ship3N2: battleships.Ship(r.Ships.Ship3N2),
+		ShipL3N1: shipV1ToPb(r.Ships.Ship3N1),
+		ShipL3N2: shipV1ToPb(r.Ships.Ship3N2),
 
-		Ship2N1: battleships.Ship(r.Ships.Ship2N1),
-		Ship2N2: battleships.Ship(r.Ships.Ship2N2),
-		Ship2N3: battleships.Ship(r.Ships.Ship2N3),
+		ShipL2N1: shipV1ToPb(r.Ships.Ship2N1),
+		ShipL2N2: shipV1ToPb(r.Ships.Ship2N2),
+		ShipL2N3: shipV1ToPb(r.Ships.Ship2N3),
 
-		Ship1N1: battleships.Ship(r.Ships.Ship1N1),
-		Ship1N2: battleships.Ship(r.Ships.Ship1N2),
-		Ship1N3: battleships.Ship(r.Ships.Ship1N3),
-		Ship1N4: battleships.Ship(r.Ships.Ship1N4),
-	}
-
-	if err := m.gm.DoAction(ctx, r.Token, r.GameId, battleships.ActionSetup, data); err != nil {
+		ShipL1N1: shipV1ToPb(r.Ships.Ship1N1),
+		ShipL1N2: shipV1ToPb(r.Ships.Ship1N2),
+		ShipL1N3: shipV1ToPb(r.Ships.Ship1N3),
+		ShipL1N4: shipV1ToPb(r.Ships.Ship1N4),
+	}}}); err != nil {
 		if errors.Is(err, manager.ErrInvalidToken) {
 			return nil, errorsV1.InvalidToken("Invalid token")
 		} else if errors.Is(err, manager.ErrInvalidGameId) {
@@ -80,4 +79,11 @@ func (m *Method) V1(ctx context.Context, r *reqV1) (*struct{}, error) {
 	}
 
 	return &struct{}{}, nil
+}
+
+func shipV1ToPb(s ShipV1) *pb.ActionSetup_Ship {
+	return &pb.ActionSetup_Ship{
+		Coordinate: s.Pos,
+		Vertical:   s.Vertical,
+	}
 }

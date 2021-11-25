@@ -6,7 +6,7 @@ import (
 
 	"github.com/go-qbit/rpc"
 
-	"github.com/bot-games/battleships"
+	"github.com/bot-games/battleships/pb"
 	manager "github.com/bot-games/game-manager"
 )
 
@@ -26,7 +26,7 @@ func (m *Method) ErrorsV1() interface{} {
 }
 
 func (m *Method) V1(ctx context.Context, r *reqV1) (*struct{}, error) {
-	if err := m.gm.DoAction(ctx, r.Token, r.GameId, battleships.ActionSkip, nil); err != nil {
+	if err := m.gm.DoAction(ctx, r.Token, r.GameId, &pb.Action{Data: &pb.Action_Skip{}}); err != nil {
 		if errors.Is(err, manager.ErrInvalidToken) {
 			return nil, errorsV1.InvalidToken("Invalid token")
 		} else if errors.Is(err, manager.ErrInvalidGameId) {

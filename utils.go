@@ -15,12 +15,12 @@ var (
 	ErrInvalidCoordinate = errors.New("invalid coordinate")
 )
 
-func GetField(state *pb.State, tickInfo *manager.TickInfo, isMy bool) []pb.Cell {
-	if tickInfo.Uid1 == tickInfo.CurUid && isMy || tickInfo.Uid1 != tickInfo.CurUid && !isMy {
-		return state.Field1
+func GetField(tickInfo *manager.TickInfo, isMy bool) []pb.Cell {
+	if tickInfo.Uids[0] == tickInfo.CurUid && isMy || tickInfo.Uids[0] != tickInfo.CurUid && !isMy {
+		return tickInfo.State.(*pb.State).Field1
 	}
 
-	return state.Field2
+	return tickInfo.State.(*pb.State).Field2
 }
 
 func CoordinateToXY(coordinate string) (uint8, uint8, error) {
