@@ -16,8 +16,9 @@ Each of the two players has a field with size 10x10 cells with different sizes s
      ┗━━━━━━━━━━━━━━━━━━━━          ┗━━━━━━━━━━━━━━━━━━━━
        0 1 2 3 4 5 6 7 8 9            0 1 2 3 4 5 6 7 8 9
 
-In first turn (tick #0) you can set up your ships (call action [setup](#/RPC%20methods/action_setup_v1)). You have to
-place 10 ships:
+In first turn (tick #0) you can set up your ships (call action [setup](#/RPC%20methods/action_setup_v1)) 
+or leave random positions (call action [skip](#/RPC%20methods/action_skip_v1)).  
+If you want to change ships position, you have to place 10 ships with different size:
 
 * **1** ship with size 4;
 * **2** ships with size 3;
@@ -39,4 +40,12 @@ For more information see methods description below.
 
 ## The source code and bot examples
 
-You can find in the [GitHub repository](https://github.com/bot-games/battleships).
+You can find them in the [GitHub repository](https://github.com/bot-games/battleships).
+
+## LocalRunner
+
+How to run:
+```bash
+    go get -u github.com/bot-games/battleships
+    go run github.com/bot-games/battleships/cmd/localrunner
+```

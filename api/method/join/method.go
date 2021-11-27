@@ -7,10 +7,10 @@ import (
 )
 
 type Method struct {
-	gm manager.GameManager
+	gm *manager.GameManager
 }
 
-func New(gm manager.GameManager) *Method {
+func New(gm *manager.GameManager) *Method {
 	return &Method{
 		gm: gm,
 	}

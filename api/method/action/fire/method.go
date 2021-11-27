@@ -7,17 +7,17 @@ import (
 )
 
 type Method struct {
-	gm manager.GameManager
+	gm *manager.GameManager
 }
 
-func New(gm manager.GameManager) *Method {
+func New(gm *manager.GameManager) *Method {
 	return &Method{
 		gm: gm,
 	}
 }
 
 func (m *Method) Caption(context.Context) string {
-	return `Skip`
+	return `Fire`
 }
 
 func (m *Method) Description(context.Context) string {

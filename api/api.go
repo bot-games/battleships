@@ -24,7 +24,7 @@ type BattleshipsRpc struct {
 	*rpc.Rpc
 }
 
-func New(gm manager.GameManager) *BattleshipsRpc {
+func New(gm *manager.GameManager) *BattleshipsRpc {
 	gameRpc := &BattleshipsRpc{rpc.New("github.com/bot-games/battleships/api/method")}
 
 	if err := gameRpc.RegisterMethods(
