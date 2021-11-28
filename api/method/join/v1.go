@@ -19,9 +19,8 @@ type gameV1 struct {
 }
 
 var errorsV1 struct {
-	InvalidToken   rpc.ErrorFunc `desc:"Invalid token"`
-	AlreadyInQueue rpc.ErrorFunc `desc:"The user is already waiting a game"`
-	AlreadyInGame  rpc.ErrorFunc `desc:"The user is already in a game. Game id will be in data field"`
+	InvalidToken  rpc.ErrorFunc `desc:"Invalid token"`
+	AlreadyInGame rpc.ErrorFunc `desc:"The user is already in a game. Game id will be in data field"`
 }
 
 func (m *Method) ErrorsV1() interface{} {
@@ -34,8 +33,6 @@ func (m *Method) V1(ctx context.Context, r *reqV1) (*gameV1, error) {
 		var errInGame manager.ErrInGame
 		if errors.Is(err, manager.ErrInvalidToken) {
 			return nil, errorsV1.InvalidToken("Invalid token")
-		} else if errors.Is(err, manager.ErrInQueue) {
-			return nil, errorsV1.AlreadyInQueue("The user is already waiting a game")
 		} else if errors.As(err, &errInGame) {
 			return nil, errorsV1.AlreadyInGame("The user is already in the game "+string(errInGame), string(errInGame))
 		}
