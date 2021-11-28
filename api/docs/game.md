@@ -44,8 +44,4 @@ You can find them in the [GitHub repository](https://github.com/bot-games/battle
 
 ## LocalRunner
 
-How to run:
-```bash
-    go get -u github.com/bot-games/battleships
-    go run github.com/bot-games/battleships/cmd/localrunner
-```
+See [README](https://github.com/bot-games/battleships/tree/master/cmd/localrunner)

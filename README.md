@@ -7,4 +7,4 @@ on the [bot-games.fun](https://bot-games.fun) site.
 *Just create a pull request if you want to add an example for your favourite language.*
 
 ### Local runner
-TBD
+See [README](https://github.com/bot-games/battleships/tree/master/cmd/localrunner)

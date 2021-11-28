@@ -1,5 +1,8 @@
+github.com/bot-games/game-manager v0.3.0/go.mod h1:KfHMmhfNEx7oh+xjq/ewQvTbyXjG2i3Txekyzu2gAqs=
 github.com/bot-games/game-manager v0.3.1 h1:PDG6KMEb+p0a99vdOfd/Rsq51Od0YaUZkoBzVOSgpok=
 github.com/bot-games/game-manager v0.3.1/go.mod h1:KfHMmhfNEx7oh+xjq/ewQvTbyXjG2i3Txekyzu2gAqs=
+github.com/bot-games/localrunner v0.1.0 h1:M2EbFCOOKqgcv5DACqqW5o9pVfjWLW0tV3v6kV1VxHI=
+github.com/bot-games/localrunner v0.1.0/go.mod h1:yo2w1+1xrlKouR8zRFdeNjWNaKt8Js4DT76PHm5LGJA=
 github.com/go-qbit/rpc v0.0.0-20210926071738-84f99eae8c99 h1:JG6CxrFCF57Ss4BYdpQzs0S0hNaPRMThvMRQlGy6xdM=
 github.com/go-qbit/rpc v0.0.0-20210926071738-84f99eae8c99/go.mod h1:eRfRdTRt6bOK5UwCrtPDLyiE4uGoPyIAcCx3zIifRk8=
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
