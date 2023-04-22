@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/golang/protobuf/proto"
+	"google.golang.org/protobuf/proto"
 
 	"github.com/bot-games/battleships/pb"
 	manager "github.com/bot-games/game-manager"
@@ -14,22 +14,18 @@ import (
 
 type Battleships struct{}
 
+func (b Battleships) Init() (proto.Message, proto.Message, uint8) {
+	return &pb.Options{}, &pb.State{
+		Field1: generateRandomField(),
+		Field2: generateRandomField(),
+	}, 3
+}
+
 const (
 	ActionSkip  = "skip"
 	ActionSetup = "setup"
 	ActionFire  = "fire"
 )
-
-func (b Battleships) GetPlayerNumbers() uint8 {
-	return 2
-}
-
-func (Battleships) InitState() proto.Message {
-	return &pb.State{
-		Field1: generateRandomField(),
-		Field2: generateRandomField(),
-	}
-}
 
 func (Battleships) DecodeState(data []byte) (proto.Message, error) {
 	state := &pb.State{}

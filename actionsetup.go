@@ -3,7 +3,7 @@ package battleships
 import (
 	"errors"
 
-	"github.com/golang/protobuf/proto"
+	"google.golang.org/protobuf/proto"
 
 	"github.com/bot-games/battleships/pb"
 	"github.com/bot-games/game-manager"

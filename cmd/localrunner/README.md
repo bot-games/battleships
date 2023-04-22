@@ -2,7 +2,7 @@
 
 ## How to install
 
-* [Install](https://go.dev/dl/) `go` with version 1.16 or upper; 
+* [Install](https://go.dev/dl/) `go` with version 1.18 or upper; 
 * Clone the project:
 ```shell
 git clone https://github.com/bot-games/battleships.git
@@ -20,7 +20,7 @@ Run `./localrunner -help` to see options.
 By default, LocalRunner listens on http://localhost:10000.
 You can open it to have access to Swagger.
 
-Bot API is available by address http://localhost:10000/api.
+Bot API is available by address http://localhost:10000/game.
 
 Your bots must use `uint32` number in string representation as a user token.
 
