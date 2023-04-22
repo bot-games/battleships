@@ -25,9 +25,7 @@ func main() {
 		log.Fatalf("Empty token")
 	}
 
-	//bsApi := api.New("https://bot-games.fun/battleships/api")
-	//bsApi := api.New("http://localhost:10000/game")
-	bsApi := api.New("http://localhost:8080/game/battleships")
+	bsApi := api.New("https://bot-games.fun/battleships/game")
 
 	if *gameId == "" {
 		log.Println("Waiting opponent")
