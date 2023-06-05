@@ -1,9 +1,13 @@
 github.com/bot-games/game-manager v0.5.0 h1:VAivmJlf4mk1lBSw4NupGgDlM9QesCrVbzZeDRbVZ2s=
 github.com/bot-games/game-manager v0.5.0/go.mod h1:1K6+rqgAk2SAlTW5i4YgKORwf/Yp6GTjY1Sw7bgKfRc=
+github.com/bot-games/game-manager v0.6.0 h1:Gj+TmbfSuX2N9dkwlCyhI3Rwy0/IchlkBQ+72i79Ga0=
+github.com/bot-games/game-manager v0.6.0/go.mod h1:1K6+rqgAk2SAlTW5i4YgKORwf/Yp6GTjY1Sw7bgKfRc=
 github.com/bot-games/localrunner v0.2.0 h1:Kq/i5Q17yFUWz+QuQL7gn0fw9R9bU7eLElFAI9seH3M=
 github.com/bot-games/localrunner v0.2.0/go.mod h1:xKkvSPyZYjbeE/78ZnHgU5WumyJhxZWIZLrKjBwdJiQ=
 github.com/go-qbit/rpc v0.4.1 h1:pp+h/t/yH8Y2NgCiqrQo/ZMSYKkDExfoxXYWrQkTWRA=
 github.com/go-qbit/rpc v0.4.1/go.mod h1:r0aGsFAH+kw35Vl5VtvaMYqTGjqVX6RJOdl6z2cV81w=
+github.com/go-qbit/rpc v0.6.0 h1:F4kStcrzcHGVNj5BJenpztR61VxQIox8mS0EGirkOOI=
+github.com/go-qbit/rpc v0.6.0/go.mod h1:r0aGsFAH+kw35Vl5VtvaMYqTGjqVX6RJOdl6z2cV81w=
 github.com/golang/protobuf v1.5.0/go.mod h1:FsONVRAS9T7sI+LIUmWTfcYkHO4aIWwzhcaSAoJOfIk=
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
