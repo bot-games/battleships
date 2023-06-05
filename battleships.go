@@ -14,11 +14,11 @@ import (
 
 type Battleships struct{}
 
-func (b Battleships) Init() (proto.Message, proto.Message, uint8) {
+func (b Battleships) Init() (proto.Message, proto.Message, uint8, any) {
 	return &pb.Options{}, &pb.State{
 		Field1: generateRandomField(),
 		Field2: generateRandomField(),
-	}, 3
+	}, 3, nil
 }
 
 const (
