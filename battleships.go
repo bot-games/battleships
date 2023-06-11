@@ -27,24 +27,6 @@ const (
 	ActionFire  = "fire"
 )
 
-func (Battleships) DecodeState(data []byte) (proto.Message, error) {
-	state := &pb.State{}
-	if err := proto.Unmarshal(data, state); err != nil {
-		return nil, err
-	}
-
-	return state, nil
-}
-
-func (Battleships) DecodeAction(data []byte) (proto.Message, error) {
-	action := &pb.Action{}
-	if err := proto.Unmarshal(data, action); err != nil {
-		return nil, err
-	}
-
-	return action, nil
-}
-
 func (b Battleships) CheckAction(tickInfo *manager.TickInfo, action proto.Message) error {
 	switch curAction := action.(*pb.Action).Data.(type) {
 	case *pb.Action_Skip:

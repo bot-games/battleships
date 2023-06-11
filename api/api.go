@@ -1,4 +1,4 @@
-//go:generate gostatic2lib -path docs/ -package docs -out docs/game.go
+//go:generate gostatic2lib -path docs/md -package docs -out docs/game.go
 //go:generate gostatic2lib -path ../player/dist -package player -out ./player/dist.go
 
 package api
